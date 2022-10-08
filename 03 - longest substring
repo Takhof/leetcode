@@ -1,0 +1,39 @@
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLongestSubstring = function(s) {
+    let currentWord = {};
+    let currentLen = -1;
+    let maxLen = 0
+    let firsttime = true
+    
+    for(let i = 0; i < s.length; i++) {
+        let letter = s[i]
+        currentLen++;
+        if (currentWord[letter] === 0){
+            currentWord[letter]++
+         } else {
+             currentWord[letter] = 0
+         }
+        for (const key in currentWord){
+            if (currentWord[letter] === 1){
+            if (i === s.length - 1){
+            if (firsttime === true){
+                return currentLen
+            }
+        } else {
+            console.log(currentLen)
+                if (currentLen > maxLen){maxLen = currentLen};
+                for (const key in currentWord){
+                    currentWord[key] = 0
+                }
+                currentLen = 1;
+                firsttime = false
+            
+            }
+        }
+        }
+    } 
+    return maxLen;  
+};
