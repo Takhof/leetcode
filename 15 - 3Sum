@@ -1,0 +1,39 @@
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var threeSum = function (nums) {
+  let solution = [];
+  let next = 0;
+
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = 1; j < nums.length; j++) {
+      if (j === nums.length - 1) {
+        i++;
+        j = i + 1;
+      }
+      for (let k = 2; k < nums.length; k++) {
+        if (nums[i] + nums[j] + nums[k] === 0) {
+          solution.push([nums[i], nums[j], nums[k]]);
+        }
+        if (k === nums.length - 1) {
+          j++;
+          k = j + 1;
+        }
+      }
+    }
+  }
+  for (let i = 0; i < solution.length; i++) {
+    solution[i].sort((a, b) => {
+      return a - b;
+    });
+  }
+  for (let i = 0; i < solution.length; i++) {
+    for (let j = 1; j < solution.length; j++) {
+      if (solution[i] === solution[j]) {
+        solution.splice(j, 1);
+      }
+    }
+  }
+  return solution;
+};
