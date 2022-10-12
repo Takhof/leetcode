@@ -8,7 +8,7 @@ var longestPalindrome = function (s) {
   for (let i = 0; i < s.length; i++) {
     for (let j = 0; j < 2; j++) {
       let left = i;
-      let right = j;
+      let right = left + j;
       while (s[left] === s[right]) {
         if (right - left > answer.length - 1 && left >= 0) {
           answer = s.slice(left, right + 1);
