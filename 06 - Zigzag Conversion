@@ -1,0 +1,19 @@
+/**
+ * @param {string} s
+ * @param {number} numRows
+ * @return {string}
+ */
+var convert = function(s, numRows) {
+    let answer = ""
+    if (numRows <= 1){
+        return s
+    }
+    for (let i = 0; i <= numRows; i++){
+        if (i === 0){
+            for (let j = 0; j < s.length; j = j + numRows + 1){
+                answer += s[j]
+            }
+        }
+    }
+    return answer
+};
