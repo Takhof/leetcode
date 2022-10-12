@@ -1,0 +1,22 @@
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var longestPalindrome = function (s) {
+  let answer = "";
+
+  for (let i = 0; i < s.length; i++) {
+    for (let j = 0; j < 2; j++) {
+      let left = i;
+      let right = j;
+      while (s[left] === s[right]) {
+        if (right - left > answer.length - 1 && left >= 0) {
+          answer = s.slice(left, right + 1);
+        }
+        left = left - 1;
+        right = right + 1;
+      }
+    }
+  }
+  return answer;
+};
