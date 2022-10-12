@@ -1,1 +1,1 @@
-# Attempting some leetcode problems.
+# Attempting leetcode problems.
