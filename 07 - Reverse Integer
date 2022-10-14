@@ -3,23 +3,18 @@
  * @return {number}
  */
 var reverse = function (x) {
-  let str = x.toString();
-  let revstr = "";
+  if (x < 0) return -reverse(-x);
 
-  for (let i = str.length - 1; i >= 0; i--) {
-    if (str[0] === "-" && i === str.length - 1) {
-      revstr += "-";
-      str = str.substring(1);
-      i--;
-    }
-    if (str[0] === 0 && i === str.length - 1) {
-      i--;
-    }
-    revstr += str[i];
+  var reversedInt = 0;
+
+  while (x > 0) {
+    var a = x % 10;
+    x = Math.floor(x / 10);
+
+    //Should no larger than Math.floor(Number.MAX_VALUE/10)
+    if (reversedInt >= 214748365) return 0;
+    reversedInt = reversedInt * 10 + a;
   }
-  let num = parseInt(revstr);
-  if (num > 2 ** 31 - 1 || num < -(2 ** 31)) {
-    return 0;
-  }
-  return num;
+
+  return reversedInt;
 };
