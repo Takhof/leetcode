@@ -10,3 +10,22 @@ var isPalindrome = function (x) {
   }
   return true;
 };
+
+var isPalindrome = function (x) {
+  let num = x;
+  let reverse = 0;
+  //set num to x and create reverse
+
+  while (num >= 1) {
+    //while num exists add the remainder of dividing by 10 to reverse (last digit) and divide num by 10
+    reverse = reverse * 10 + (num % 10);
+    num = Math.floor(num / 10);
+  }
+  //check if original number is equal to the resverse
+
+  if (x === reverse) {
+    return true;
+  } else {
+    return false;
+  }
+};
