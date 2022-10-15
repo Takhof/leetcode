@@ -1,18 +1,24 @@
-var mergeTwoLists = function(l1, l2) {
-    let dummy = {val:0, next:null},
-        current = dummy;
-    
-    while(l1 && l2) {
-        if(l1.val > l2.val) {
-            current.next = l2;
-            l2 = l2.next;
-        } else {
-            current.next = l1;
-            l1 = l1.next;
-        }
-        current = current.next;
+var mergeTwoLists = function (l1, l2) {
+  //create dummy head
+  let dummy = { val: 0, next: null },
+    //point current to dummy head
+    current = dummy;
+
+  while (l1 && l2) {
+    //if l1 or l2 exists, check which one's value is lesser and point current's next to it
+    if (l1.val > l2.val) {
+      current.next = l2;
+      l2 = l2.next;
+    } else {
+      current.next = l1;
+      l1 = l1.next;
     }
-    current.next = l1 || l2;
-    
-    return dummy.next;
+    //once it's pointed, move current to current's next
+    current = current.next;
+  }
+  //if either doesnt exist anymore then point current's next to the current location of l1 or l2
+  current.next = l1 || l2;
+
+  //return dummy's next
+  return dummy.next;
 };
