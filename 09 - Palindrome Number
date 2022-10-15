@@ -1,0 +1,12 @@
+var isPalindrome = function (x) {
+  //convert number to string (so we can iterate)
+  let strNum = x.toString();
+  for (let i = 0; i <= strNum.length / 2; i++) {
+    //iterate thru the string until half of the entire thing
+    if (strNum[i] !== strNum[strNum.length - i - 1]) {
+      //check if first/last is the same, increment one at a time and return false if any doesn tmatch
+      return false;
+    }
+  }
+  return true;
+};
