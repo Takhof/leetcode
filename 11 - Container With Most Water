@@ -1,0 +1,30 @@
+/**
+ * @param {number[]} height
+ * @return {number}
+ */
+var maxArea = function (height) {
+  //declare maxArea and the pointers
+  let maxArea = 0;
+  let firstPointer = 0;
+  let lastPointer = height.length - 1;
+
+  while (firstPointer !== lastPointer) {
+    //declare the heights of the current part of the graph
+    let first = height[firstPointer];
+    let last = height[lastPointer];
+
+    //multiply the lower of the two heights with how long the pointers are apart
+    currArea = (first > last ? last : first) * (lastPointer - firstPointer);
+    if (currArea > maxArea) {
+      maxArea = currArea;
+    }
+    //move the first pointer right if it's lower, move the last pointer to left if that's lower
+    if (first > last) {
+      lastPointer--;
+    } else {
+      firstPointer++;
+    }
+    //the only time area would be bigger when the length is shorter is if height is heigher
+  }
+  return maxArea;
+};
