@@ -26,5 +26,6 @@ var maxArea = function (height) {
     }
     //the only time area would be bigger when the length is shorter is if height is heigher
   }
+  //return maxArea
   return maxArea;
 };
