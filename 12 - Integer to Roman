@@ -1,0 +1,28 @@
+/**
+ * @param {number} num
+ * @return {string}
+ */
+var intToRoman = function(num) {
+    //declare return string
+    let roman = ""
+    
+    //define range to include
+    if (num < 1 || num > 3999){
+        return roman
+    }
+    
+    //create a map that correlates between the roman alphabet and the specific number
+    let alphabet = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
+    let map = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+    
+    //run through the map and subtract the number while adding the corresponding letter
+    for (let i = 0; i < map.length; i++){
+        while (map[i] <= num){
+            num = num - map[i];
+            roman += alphabet[i]
+        } 
+    }
+    
+    //return the resulting string
+    return roman
+};
