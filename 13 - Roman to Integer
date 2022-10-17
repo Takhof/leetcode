@@ -1,0 +1,25 @@
+
+var romanToInt = function(str) {
+    //declare return number
+    let integer = 0
+    
+
+    //create map of roman numeral to number
+    const map = { 'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+    
+    //loop thru the roman numeral, adding the corresponding map.
+    //If the next number corresponding to roman numeral is bigger, subtract the current one.
+    for (let i = 0; i < str.length; i++){
+        let current = str[i];
+        let next = str[i+1];
+        
+        if (map[current] < map[next]){
+            integer -= map[current]
+        } else {
+            integer += map[current]
+        }
+    }
+    
+    //return the resulting integer
+    return integer;
+};
