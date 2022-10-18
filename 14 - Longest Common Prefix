@@ -1,0 +1,34 @@
+/**
+ * @param {string[]} strs
+ * @return {string}
+ */
+var longestCommonPrefix = function (strs) {
+  //outlier
+  if (strs.length === 1) {
+    return strs[0];
+  }
+  //create return string
+  let answer = "";
+  //create current letter pointer
+  let current = 0;
+  //run a for loop for length of the first element in the strs array
+  //run a loop through each element in the array, checking letter pointers with each other
+  //add them to answer string if it all passes, otherwise return the current answer string
+  for (let j = 0; j < strs[0].length; j++) {
+    for (let i = 0; i < strs.length; i++) {
+      //check here if it's an empty string or invalid entry
+      if (!strs[i]) {
+        return answer;
+      }
+      let checkTo = strs[0][current];
+      if (strs[i][current] !== checkTo) {
+        return answer;
+      }
+      if (i === strs.length - 1) {
+        answer += strs[i][current];
+        current++;
+      }
+    }
+  }
+  return answer;
+};
