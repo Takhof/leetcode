@@ -1,1 +1,3 @@
-## Solving leetcode.
+Solving leetcode.
+
+Began adding pseudocode midway.
