@@ -2,38 +2,46 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
-var threeSum = function (nums) {
-  let solution = [];
-  let next = 0;
+const threesum = (nums) => {
+  //declare answer array
+  let answer = [];
+  //sort the numbers
+  nums.sort(function (a, b) {
+    return a - b;
+  });
+  //create a function that goes thru the 2 numbers to test against the first
+  const otherTwo = (nums, i) => {
+    //set low pointer to loop + 1, high point to end of array
+    let low = i + 1;
+    let high = nums.length - 1;
 
+    while (low < high) {
+      let sum = nums[i] + nums[low] + nums[high];
+      if (sum < 0) {
+        low++;
+      } else if (sum > 0) {
+        high--;
+      } else {
+        answer.push([nums[i], nums[low], nums[high]]);
+        //once the answer is found, move the other two one spaces up and down
+        low++;
+        high--;
+        //move the low one further ahead if it's the same so it prevents adding the same
+        while (low < high && nums[low] === nums[low - 1]) low++;
+      }
+    }
+  };
+
+  //create function that moves the first point of 3 numbers one at a time
   for (let i = 0; i < nums.length; i++) {
-    for (let j = 1; j < nums.length; j++) {
-      if (j === nums.length - 1) {
-        i++;
-        j = i + 1;
-      }
-      for (let k = 2; k < nums.length; k++) {
-        if (nums[i] + nums[j] + nums[k] === 0) {
-          solution.push([nums[i], nums[j], nums[k]]);
-        }
-        if (k === nums.length - 1) {
-          j++;
-          k = j + 1;
-        }
-      }
+    //if the first number is over 0 it will never equal 0 cuz it's sorted! wow
+    if (nums[i] > 0) {
+      return answer;
+    }
+    //check if first number is a duplicate to prevent adding same pairs
+    if (i === 0 || nums[i - 1] !== nums[i]) {
+      otherTwo(nums, i);
     }
   }
-  for (let i = 0; i < solution.length; i++) {
-    solution[i].sort((a, b) => {
-      return a - b;
-    });
-  }
-  for (let i = 0; i < solution.length; i++) {
-    for (let j = 1; j < solution.length; j++) {
-      if (solution[i] === solution[j]) {
-        solution.splice(j, 1);
-      }
-    }
-  }
-  return solution;
+  return answer;
 };
