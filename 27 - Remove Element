@@ -1,0 +1,25 @@
+/**
+ * @param {number[]} nums
+ * @param {number} val
+ * @return {number}
+ */
+var removeElement = function (nums, val) {
+  //declare left most and right most part of nums array
+  let left = 0;
+  let right = nums.length - 1;
+
+  // while left and right are not equal, check if array at left are equal to value
+  //if it is value, put the array right element in there
+  //if the new left element is equal to value, keep doing that
+  //if it's different, left moves one up
+  //this works because order doesn't matter
+  while (left <= right) {
+    if (nums[left] === val) {
+      nums[left] = nums[right];
+      right--;
+    } else {
+      left++;
+    }
+  }
+  return left;
+};
